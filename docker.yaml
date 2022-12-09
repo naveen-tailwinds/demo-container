@@ -1,0 +1,17 @@
+stages:
+  final:
+    - from:
+        image: python:3.8-slim-buster
+    - workdir:
+        dir: /app
+    - run:
+        runForm: shell
+        params:
+          - apt-get update &&
+          - pip3 install -r requirements.txt
+    - cmd:
+        params:
+          - python3
+          - -m
+          - flask
+          - --host=0.0.0.0
